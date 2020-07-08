@@ -6,6 +6,10 @@ module.exports = {
     // defaults to ./src
     // Here the application starts executing
     // and webpack starts bundling
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase:'./dist',
+    },
     entry: "./src/index.js",
     output: {
         filename: 'index.[contenthash].js'

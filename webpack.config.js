@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: "development", // "production" | "development" | "none"entry: "./app/entry", // string | object | array
@@ -7,6 +8,19 @@ module.exports = {
     // and webpack starts bundling
     entry: "./src/index.js",
     output: {
-        filename: '[name].[contenthash].js'
-    }
+        filename: 'index.[contenthash].js'
+    },
+    plugins: [new HtmlWebpackPlugin({
+        title: 'My App',
+        template: 'src/assets/index.html'
+    })],
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+        ],
+    },
 }
+

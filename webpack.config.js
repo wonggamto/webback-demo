@@ -1,28 +1,18 @@
 const path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const base = require('./webpack.config.base')
 module.exports = {
-    mode: "development", // "production" | "development" | "none"entry: "./app/entry", // string | object | array
-    // defaults to ./src
-    // Here the application starts executing
-    // and webpack starts bundling
-    devtool: 'inline-source-map',
+    ...base,
+    devtool: "inline-source-map",
     devServer: {
-        contentBase:'./dist',
+        contentBase: './dist',
     },
-    entry: "./src/index.js",
-    output: {
-        filename: 'index.[contenthash].js'
-    },
-    plugins: [new HtmlWebpackPlugin({
-        title: 'My App',
-        template: 'src/assets/index.html'
-    })],
     module: {
         rules: [
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader']
             },
         ],
     },
